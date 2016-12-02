@@ -23,7 +23,7 @@ var archivo = {
 			// loop through all the selected files and add them to the formData object
 			for (var i = 0; i < files.length; i++) {
 			  var file = files[i];
-				archivo.nombre  = stringGen(3)+"_"+ file.name
+				archivo.nombre  = stringGen(3)+"_"+ file.name;
 			  // add the files to formData object for the data payload
 			  formData.append('uploads[]', file, archivo.nombre);
 			  //console.log(file);
@@ -36,12 +36,11 @@ var archivo = {
 		  processData: false,
 		  contentType: false,
 		  success: function(data){
-			  console.log('Cargado Exitosamente!\n' + data);
+			  console.log('Cargado Exitosamente:\n' + data);
 		  },
 		  xhr: function() {
 			// create an XMLHttpRequest
 			var xhr = new XMLHttpRequest();
-
 			// listen to the 'progress' event
 			xhr.upload.addEventListener('progress', function(evt) {
 
@@ -58,19 +57,15 @@ var archivo = {
 				if (percentComplete === 100) {
 				  $('.progress-bar').html('Done');
 				}
-
 			  }
-
 			}, false);
-
 			return xhr;
 		  }
 		});
-
 	}
-}
+};
 
 $('#upload-input').on('change', function(){
 	var files = $(this).get(0).files;
-	archivo.cargaArchivo(files)
+	archivo.cargaArchivo(files);
 });
